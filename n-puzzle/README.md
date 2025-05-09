@@ -25,4 +25,4 @@ Two versions of the benchmark are available:
 
 The variable `SOLVE_TIMEOUT` in the benchmark script defines a 60-timeout per puzzle solve.
 
->  Since this value is machine-dependent, if you see VM struggles with solving large puzzles (especially BFS or DFS for sizes above 12x12), increase the timeout by setting `SOLVE_TIMEOUT` in `benchmark.py` or `benchmark_nomultithread.py` to a larger value manually.
+> **Note:** Since this value is machine-dependent, if you see VM struggles with solving large puzzles (especially BFS or DFS for sizes above 12x12), increase the timeout by setting `SOLVE_TIMEOUT` in `benchmark.py` or `benchmark_nomultithread.py` to a larger value manually.
