@@ -1,5 +1,4 @@
 # Same README.md as the one provided
-
 Play the game on [CodinGame](https://www.codingame.com/training/hard/sokoban)
 
 Maven is needed.
@@ -23,6 +22,7 @@ java --add-opens java.base/java.lang=ALL-UNNAMED \
       -cp "$(mvn dependency:build-classpath -Dmdep.outputFile=/dev/stdout -q):target/test-classes/:target/classes" \
       sokoban.SokobanMain
 ````
+> **Note** provide to this a `.json` test file to parse relative to `config` folder. For example you can put `test0.json` as a test file.
 or (after mvn package)
 ```
 java --add-opens java.base/java.lang=ALL-UNNAMED \
