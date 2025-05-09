@@ -20,6 +20,7 @@ Two versions of the benchmark are available:
 - **Single-threaded** `benchmark_nomultithread.py`
 
 > **Note:** VM provided for testing **does not have** `matplotlib` installed globally, which is **required** for plotting results. You may need to install it to be able to run the benchmark locally.
+> Also you **must** be in this repository directly to be able to run anything!
 
 ## Timeout Setting
 
