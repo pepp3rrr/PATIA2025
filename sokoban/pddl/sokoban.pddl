@@ -1,0 +1,111 @@
+(define (domain sokoban)
+    (:requirements :strips)
+    (:predicates
+        ;;; Sokoban at location x
+        (isPlayer ?x)
+        ;;; Crate at location x
+        (isCrate ?x) 
+        ;;; Location x is clear (not occupied by a crate, wall, or sokoban)
+        (isClear ?x) 
+        ;;; Location x is to the left of location y
+        (leftOf ?x ?y)
+        ;;; Location x is below location y
+        (below ?x ?y) 
+    )
+
+    (:action moveLeft
+        :parameters (?x ?y)
+        :precondition (and (isPlayer ?x)
+            (leftOf ?y ?x)
+            (isClear ?y))
+        :effect (and (isPlayer ?y) (isClear ?x)
+            (not (isPlayer ?x)) (not (isClear ?y)))
+    )
+
+    (:action moveRight
+        :parameters (?x ?y)
+        :precondition (and (isPlayer ?x)
+            (leftOf ?x ?y)
+            (isClear ?y))
+        :effect (and (isPlayer ?y) (isClear ?x)
+            (not (isPlayer ?x)) (not (isClear ?y)))
+    )
+
+    (:action moveUp
+        :parameters (?x ?y)
+        :precondition (and (isPlayer ?x)
+            (below ?x ?y)
+            (isClear ?y))
+        :effect (and (isPlayer ?y) (isClear ?x)
+            (not (isPlayer ?x)) (not (isClear ?y)))
+    )
+
+    (:action moveDown
+        :parameters (?x ?y)
+        :precondition (and (isPlayer ?x)
+            (below ?y ?x)
+            (isClear ?y))
+        :effect (and (isPlayer ?y) (isClear ?x)
+            (not (isPlayer ?x)) (not (isClear ?y)))
+    )
+
+    (:action pushLeft
+        :parameters (?x ?y ?z)
+        :precondition (and (isPlayer ?x)
+            (isCrate ?y)
+            (leftOf ?y ?x)
+            (leftOf ?z ?y)						    					
+            (isClear ?z))
+        :effect (and (isPlayer ?y) (isCrate ?z)
+            (isClear ?x)
+            (not (isPlayer ?x))
+            (not (isCrate ?y))
+            (not (isClear ?z))
+            (not (isClear ?y)))
+    )
+
+    (:action pushRight
+        :parameters (?x ?y ?z)
+        :precondition (and (isPlayer ?x)
+            (isCrate ?y)
+            (leftOf ?x ?y) 
+            (leftOf ?y ?z)
+            (isClear ?z))
+        :effect (and (isPlayer ?y) (isCrate ?z)
+            (isClear ?x)
+            (not (isPlayer ?x))
+            (not (isCrate ?y))
+            (not (isClear ?z))
+            (not (isClear ?y)))
+    )
+
+    (:action pushUp
+        :parameters (?x ?y ?z)
+        :precondition (and (isPlayer ?x)
+            (isCrate ?y)
+            (below ?x ?y)
+            (below ?y ?z)
+            (isClear ?z))
+        :effect (and (isPlayer ?y) (isCrate ?z)
+            (isClear ?x)
+            (not (isPlayer ?x))
+            (not (isCrate ?y))
+            (not (isClear ?y))
+            (not (isClear ?z)))
+    )
+
+    (:action pushDown
+        :parameters (?x ?y ?z)
+        :precondition (and (isPlayer ?x)
+            (isCrate ?y)
+            (below ?y ?x)
+            (below ?z ?y)
+            (isClear ?z))
+        :effect (and (isPlayer ?y) (isCrate ?z)
+            (isClear ?x)
+            (not (isPlayer ?x))
+            (not (isCrate ?y))
+            (not (isClear ?y))
+            (not (isClear ?z)))
+    )
+)
