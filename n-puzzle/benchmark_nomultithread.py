@@ -4,7 +4,7 @@ import tempfile
 import subprocess
 import matplotlib.pyplot as plt
 
-PUZZLE_SIZE_RANGE = range(3, 20, 4)
+PUZZLE_SIZE_RANGE = range(3, 100, 4)
 SOLVE_TIMEOUT = 60
 NUM_SAMPLES = 2
 MAX_LENGTH = 20
