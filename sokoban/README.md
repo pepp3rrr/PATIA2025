@@ -23,8 +23,8 @@ java --add-opens java.base/java.lang=ALL-UNNAMED \
       sokoban.SokobanMain
 ````
 > **Note** provide to this a `.json` test file to parse relative to `config` folder. For example you can put `test0.json` as a test file.
-or (after mvn package)
 ```
+or (after mvn package)
 java --add-opens java.base/java.lang=ALL-UNNAMED \
       -server -Xms2048m -Xmx2048m \
       -cp target/sokoban-1.0-SNAPSHOT-jar-with-dependencies.jar \
